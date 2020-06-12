@@ -1,13 +1,17 @@
 # **HP製作**  
 
 ## *Home*　　
-- [ ] header　　
-- [ ] svgの画像をstroke　　
-- [ ] scroll画面　　
+- [x] header　　
+- [x] svgの画像をstroke　　
+- [x] scroll画面　　
 ## *Project*　　
-- [ ] テーマ　　
-- [ ] ECサイトとviewmoreを分割  
+- [x] テーマ　　
+- [x] ECサイトとviewmoreを分割  
 ## *Contact*  
-- [ ] 左に顔画像と学校と名前  
-- [ ] コメントとメールアドレス  
-- [ ] footerはgitでHP＿Projectのソースコードを載せる  
+- [x] 左に顔画像と学校と名前  
+- [x] コメントとメールアドレス  
+- [x] footerはgitでHP＿Projectのソースコードを載せる  
+
+##明日やること  
+- [ ] レスポンシブ  
+- [ ] urlを繋ぐ
