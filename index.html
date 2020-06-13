@@ -2,18 +2,27 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="style.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/css/uikit.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Bellota:ital,wght@1,700&family=Kosugi+Maru&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit-icons.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
     <title></title>
   </head>
 
   <body>
+    <!--ローディング-->
+    <div id="showloading">
+      <p>Now Loading . . . </p>
+      <span uk-spinner="ratio: 4.5"></span>
+    </div>
+    <div id="contents" class="hidden">
+
     <header>
-      <img src="logo.svg" alt="logo">
+      <img src="src/logo.svg" alt="logo">
     </header>
     <div class="container">
       <div class="home">
@@ -134,6 +143,11 @@
               </g>
               </svg>
         </div>
+        <a href="#top" id="btn_backtop">
+          <span class="circle">
+            <p>PAGE <br> TOP</p>
+          </span>
+        </a>
       </div>
       <!--プロジェクト-->
       <div class="fadein">
@@ -141,20 +155,20 @@
         <div class="grid_column">
           <!--ECの画像-->
           <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-           <img src="ec.jpg" alt="EC_image">
+           <img src="src/ec.jpg" alt="EC_image">
            <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-column uk-flex-middle">
                <h2>ECサイト</h2>
                <div class="view">
-                 <p>view more</p>
+                 <a href="http://kako-ogura.tonkotsu.jp/ecsite/index.php"><p>view more</p></a>
                </div>
            </div>
        </div>
           <div>
             <div class="comment_project">
               <p>まだまだ勉強中ですが、</p>
-              <p>これからどんどんデプロイしていきます</p>
+              <p>これからどんどんアウトプットしていきます</p>
               <div class="view">
-                <p>view more</p>
+                <a href="#" onclick="reply_click(this.id)"><p>view more</p></a>
               </div>
             </div>
           </div>
@@ -165,30 +179,113 @@
         <h1>Contact</h1>
           <div class="grid_column2">
             <div class="comment_me1">
-              <div>
-                <img src="me.png" alt="me">
-              </div><br>
+              <div class="uk-transition-toggle" tabindex="0">
+                  <div class="uk-transition-scale-up uk-transition-opaque">
+                    <img src="src/me.png" alt="me">
+                  </div>
+              </div>
+              <br>
               <p>小倉佳子</p>
               <p>Seattle Central College</p>
               <p>Business Technology Manegement</p>
             </div>
             <div class="comment_me2">
-              <h3>SKILL</h3>
-              <p>Front-end <br>HTML, CSS, Javascript(React.js/Typescript/Vue.js)</p>
-              <p>Back-end <br>PHP(LaravelPHP)</p>
-              <p>DB <br> MySQL</p>
+              <h3 class="skill">SKILL</h3>
+              <p class="front">Front-end <br>HTML, CSS, Javascript(React.js/Typescript/anime.js/Vue.js)</p>
+              <p class="back">Back-end <br>PHP(LaravelPHP)</p>
+              <p class="db">DB <br> MySQL</p>
               <div class="icon">
-                <a href="" class="uk-icon-button uk-margin-medium-right" uk-icon="twitter"></a>
-                <a href="" class="uk-icon-button uk-margin-medium-right" uk-icon="github"></a>
-                <a href="" class="uk-icon-button" uk-icon="mail"></a>
+                <div class="uk-transition-toggle" tabindex="0">
+                    <div class="uk-transition-scale-up uk-transition-opaque">
+                      <a href="https://twitter.com/home" class="uk-icon-button uk-margin-medium-right" uk-icon="twitter"></a>
+                    </div>
+                </div>
+                <div class="uk-transition-toggle" tabindex="0">
+                    <div class="uk-transition-scale-up uk-transition-opaque">
+                      <a href="https://github.com/kako-ogura/HP_project" class="uk-icon-button uk-margin-medium-right" uk-icon="github"></a>
+                    </div>
+                </div>
+                <div class="uk-transition-toggle" tabindex="0">
+                    <div class="uk-transition-scale-up uk-transition-opaque">
+                      <a onclick="mail(this.id)"class="uk-icon-button" uk-icon="mail"></a>
+                    </div>
+                </div>
               </div>
             </div>
         </div>
       </div>
     </div>
+    </div>
 
     <script>
-    $(window).scroll(function (){
+    // ローディング画面のdivを取得
+      var showloading = document.getElementById('showloading');
+      // 画面本体のdivを取得
+      var contents = document.getElementById('contents');
+      // 読み込みが完了したら発動
+      window.addEventListener('load', function () {
+      // loadingのdivを非表示に
+      showloading.style.display = 'none';
+      // contentsのdivを表示
+      contents.classList.remove('hidden');
+      });
+
+      //スクロール したときのフェードイン
+        //何px動くかでイベントを起こす
+        var px_change = 1;
+        //スクロールでのイベントファンクション
+        window.addEventListener('scroll', function(e){
+        //位置を登録
+          //垂直方向のスクロール量を表すピクセル単位の数値を返す
+          let scrollTop = window.pageYOffset ||
+          //要素内の垂直方向のスクロール量を取得、変更する
+          document.documentElement.scrollTop;
+          if (scrollTop > px_change) {
+            document.getElementById('btn_backtop').classList.add('scrollin');
+          }else {
+            document.getElementById('btn_backtop').classList.remove('scrollin');
+          }
+        });
+
+
+      //トップに戻るアクション機能
+      document.getElementById( "btn_backtop" ).addEventListener('click', function(e) { //anime.js で実装
+      	anime({
+      		targets: "html, body",
+      		scrollTop: 0,
+      		duration: 700,
+      		easing: 'easeInOutQuad',
+      	});
+      	return false;
+      });
+
+
+      //スクロールでバックするボタンのアニメーション
+      var scalebtn = document.querySelector('.circle');
+
+      scalebtn.addEventListener('mouseenter', (event) => {
+        anime.remove(scalebtn);
+        anime({
+          targets:scalebtn,
+          easing:'easeInOutQuad',
+          scale:1.5,
+          duration:1000,
+          rotate: '1turn',
+        })
+      });
+
+      scalebtn.addEventListener('mouseleave', (event) => {
+        anime.remove(scalebtn);
+        anime({
+          targets:scalebtn,
+          easing:'easeInOutQuad',
+          scale:1,
+          duration:600,
+        })
+      });
+
+      //jQueryでフェードイン機能
+      $(window).scroll(function (){
       $('.fadein').each(function(){
           var elemPos = $(this).offset().top,
               scroll = $(window).scrollTop(),
@@ -198,6 +295,25 @@
               }
           });
       });
+
+      //hoverされたときにアップダウンする実装
+      $('.comment_me2').hover(function(){
+        $('.skill,.front,.back,.db').css('transform','translateY(-10px)');
+      },function(){
+        $('.skill,.front,.back,.db').css('transform','translateY(0px)');
+      });
+
+      //アラート
+      function reply_click(clicked_id)
+       {
+           alert('現在作成中です。' + 'しばらくお待ちください');
+       }
+
+       function mail()
+        {
+            alert('gura122897@gmail.com');
+        }
     </script>
+    </div>
   </body>
 </html>
