@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style2.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/css/uikit.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bellota:ital,wght@1,700&family=Kosugi+Maru&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit-icons.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
+    <title>Work</title>
+  </head>
+
+  <body>
+    <!--ローディング-->
+    <div id="showloading">
+      <p>Now Loading . . . </p>
+      <span uk-spinner="ratio: 4.5"></span>
+    </div>
+
+    <div class="fadein">
+      <div id="contents" class="hidden">
+        <div class="container">
+
+          <h1>Work</h1>
+
+
+          <div>
+            <h3>Front end</h3>
+            <div class="box">
+
+              <img src="Javascript_FormValidation2.jpg" alt="form_val">
+              <div class="contents">
+                <p>Form Validation</p>
+                <div class="uk-transition-toggle" tabindex="0">
+                    <div class="uk-transition-scale-up uk-transition-opaque">
+                      <a href="https://github.com/kako-ogura/Javascript_FormValidation" class="uk-icon-button" uk-icon="github"></a>
+                    </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="backend_form">
+            <h3>Back end </h3>
+            <div class="box">
+
+              <img src="home.jpg" alt="ecweb">
+              <div class="contents">
+                <p>ECウェブサイト</p>
+                <div class="uk-transition-toggle" tabindex="0">
+                    <div class="uk-transition-scale-up uk-transition-opaque">
+                      <a href="https://github.com/kako-ogura/Ecommerce_website" class="uk-icon-button " uk-icon="github"></a>
+                    </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+
+
+
+  <script>
+  // ローディング画面のdivを取得
+    var showloading = document.getElementById('showloading');
+    // 画面本体のdivを取得
+    var contents = document.getElementById('contents');
+    // 読み込みが完了したら発動
+    window.addEventListener('load', function () {
+    // loadingのdivを非表示に
+    showloading.style.display = 'none';
+    // contentsのdivを表示
+    contents.classList.remove('hidden');
+    });
+
+    //jQueryでフェードイン機能
+
+    $('.fadein').each(function(){
+        var elemPos = $(this).offset().top,
+            scroll = $(window).scrollTop(),
+            windowHeight = $(window).height();
+          if (scroll > elemPos - windowHeight + 100){
+              $(this).addClass('scrollin');
+            }
+        });
+
+  </script>
+  </body>
+</html>
