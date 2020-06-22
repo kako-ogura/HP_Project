@@ -201,6 +201,14 @@ h2{
 
 
 //Contact
+.greeting{
+  margin:0 auto;
+  font-family: inherit;
+  font-size: 13px;
+  width: 500px;
+  min-height: 40px;
+  padding-top: 20px;
+}
 .grid_column2{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -228,6 +236,7 @@ h2{
   }
   .comment_me2{
     transition: 0.2s ease-in-out;
+    padding-bottom: 30px;
     .skill{
       transition: all .2s ease-in-out;
       transition-delay: 0.2s;
@@ -240,9 +249,13 @@ h2{
       transition: all .2s ease-in-out;
       transition-delay: 0.4s;
     }
-    .db{
+    .adobe{
       transition: all .2s ease-in-out;
       transition-delay: 0.5s;
+    }
+    .db{
+      transition: all .2s ease-in-out;
+      transition-delay: 0.6s;
     }
     &.comment_me2:hover{
       transform: scale(1.1);
