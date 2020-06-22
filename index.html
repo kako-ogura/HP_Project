@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.3/dist/js/uikit-icons.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.0/lib/anime.min.js"></script>
-    <title></title>
+    <title>Home</title>
   </head>
 
   <body>
@@ -149,34 +149,49 @@
           </span>
         </a>
       </div>
+
+
       <!--プロジェクト-->
       <div class="fadein">
+
         <h1>Project</h1>
         <div class="grid_column">
           <!--ECの画像-->
           <div class="uk-inline-clip uk-transition-toggle" tabindex="0">
-           <img src="src/ec.jpg" alt="EC_image">
-           <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-column uk-flex-middle">
-               <h2>ECサイト</h2>
-               <div class="view">
-                 <a href="http://kako-ogura.tonkotsu.jp/ecsite/index.php"><p>view more</p></a>
-               </div>
-           </div>
-       </div>
+             <img src="src/ec.jpg" alt="EC_image">
+             <div class="uk-transition-fade uk-position-cover uk-position-small uk-overlay uk-overlay-default uk-flex uk-flex-column uk-flex-middle">
+                 <h2>ECサイト</h2>
+                 <div class="view">
+                   <a href="http://kako-ogura.tonkotsu.jp/ecsite/index.php"><p>view more</p></a>
+                 </div>
+             </div>
+          </div>
           <div>
             <div class="comment_project">
               <p>まだまだ勉強中ですが、</p>
               <p>これからどんどんアウトプットしていきます</p>
               <div class="view">
-                <a href="#" onclick="reply_click(this.id)"><p>view more</p></a>
+                <a href="work/work.html"><p>view more</p></a>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
       <!--コンタクト-->
       <div class="fadein">
         <h1>Contact</h1>
+        <div class="greeting">
+          <p>
+            こんにちは、小倉佳子です。奈良県の高校卒業後、アメリカ合衆国のシアトルで４年間
+            英語に加えてビジネス教養とコンピューター技術と独学でプログラミングを学んでおりました。
+            私は、UIやUXのフィールドに興味を持っていて普段の開発においてもユーザーにとって
+            見やすいサイトを作るように心掛けております。Webデザインとweb開発を追求していき、
+            いつかは両方を兼ねることができるUI・UXエンジニアを目指しております。
+          </p>
+        </div>
+
           <div class="grid_column2">
             <div class="comment_me1">
               <div class="uk-transition-toggle" tabindex="0">
@@ -193,6 +208,7 @@
               <h3 class="skill">SKILL</h3>
               <p class="front">Front-end <br>HTML, CSS, Javascript(React.js/Typescript/anime.js/Vue.js)</p>
               <p class="back">Back-end <br>PHP(LaravelPHP)</p>
+              <p class="adobe">ADOBE <br>Illustrator, Photoshop, Anime</p>
               <p class="db">DB <br> MySQL</p>
               <div class="icon">
                 <div class="uk-transition-toggle" tabindex="0">
@@ -214,6 +230,7 @@
             </div>
         </div>
       </div>
+
     </div>
     </div>
 
@@ -298,17 +315,12 @@
 
       //hoverされたときにアップダウンする実装
       $('.comment_me2').hover(function(){
-        $('.skill,.front,.back,.db').css('transform','translateY(-10px)');
+        $('.skill,.front,.back,.adobe,.db').css('transform','translateY(-10px)');
       },function(){
-        $('.skill,.front,.back,.db').css('transform','translateY(0px)');
+        $('.skill,.front,.back,.adobe,.db').css('transform','translateY(0px)');
       });
 
       //アラート
-      function reply_click(clicked_id)
-       {
-           alert('現在作成中です。' + 'しばらくお待ちください');
-       }
-
        function mail()
         {
             alert('gura122897@gmail.com');
